@@ -3,430 +3,859 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steve Moradel — Écrivain · Stratège · Penseur</title>
-<meta name="description" content="Steve Moradel, écrivain, stratège et penseur contemporain. Auteur de Sur les hauteurs des chutes du Niagara. Fondateur de Jabrilia Éditions.">
-<meta property="og:title" content="Steve Moradel — Écrivain · Stratège · Penseur">
-<meta property="og:description" content="Écrivain, stratège et penseur. Analyste des mutations contemporaines.">
-<meta property="og:type" content="website">
+<title>Steve Moradel — Écrivain · Entrepreneur · Stratège</title>
+<meta name="description" content="Steve Moradel — Écrivain, entrepreneur, stratège et conférencier. Co-fondateur de PULSAR, Jabrilia Éditions, Bemersive et Prisme.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --ink:#0A0A0A;--ink2:#111;--ink3:#1A1A1A;
-  --ivory:#F5F0E8;--cream:#FAF8F4;--white:#FEFDFB;
-  --gold:#C8A45A;--gold-lt:#D4B876;--gold-dk:#A8873D;
-  --txt-d:#E8E2D8;--txt-dm:#9A9488;--txt-l:#1A1A1A;--txt-lm:#6B6560;
-  --fd:'Playfair Display',Georgia,serif;
-  --fh:'Cormorant Garamond',Garamond,serif;
-  --fb:'Source Sans 3',sans-serif;
-  --fa:'Libre Baskerville',Georgia,serif;
-  --max:1200px;--pad:clamp(24px,5vw,80px);
-  --ease:cubic-bezier(.23,1,.32,1);
+/* ─────────────────────────────────────────────────────────────
+   TOKENS
+──────────────────────────────────────────────────────────────*/
+:root {
+  --bleu:       #0b1120;
+  --bleu-mid:   #111827;
+  --or:         #C8A45A;
+  --or-clair:   #D4B876;
+  --or-sombre:  #A8873D;
+  --or-ghost:   rgba(200,164,90,.12);
+  --creme:      #faf8f4;
+  --creme-soft: #f3f0ea;
+  --gris:       #6b7a94;
+  --overlay:    rgba(8,13,24,.72);
+  --ease-silk:  cubic-bezier(.25,.46,.45,.94);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-font-smoothing:antialiased}
-body{font-family:var(--fb);font-size:16px;line-height:1.7;overflow-x:hidden;background:var(--ink);color:var(--txt-d)}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}ul{list-style:none}
-::selection{background:var(--gold);color:var(--ink)}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.ctn{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.ctn--n{max-width:800px;margin:0 auto;padding:0 var(--pad)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
-.rv{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.v{opacity:1;transform:none}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* SECTIONS */
-.sec{padding:clamp(80px,10vw,140px) 0}
-.sec--dk{background:var(--ink);color:var(--txt-d)}
-.sec--lt{background:var(--ivory);color:var(--txt-l)}
-.sec--cr{background:var(--cream);color:var(--txt-l)}
-.sec--dp{background:var(--ink2);color:var(--txt-d)}
-.sh{text-align:center;margin-bottom:clamp(48px,6vw,80px)}
-.sh .lab{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
-.sec--dk .lab,.sec--dp .lab{color:var(--gold)}.sec--lt .lab,.sec--cr .lab{color:var(--gold-dk)}
-.sh h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:20px}
-.sec--lt .sh h2,.sec--cr .sh h2{color:var(--ink)}
-.sh .dv{width:60px;height:1px;background:var(--gold);margin:0 auto 20px}
-.sh .sub{font-family:var(--fa);font-size:1.05rem;font-style:italic;max-width:600px;margin:0 auto}
-.sec--dk .sub,.sec--dp .sub{color:var(--txt-dm)}.sec--lt .sub,.sec--cr .sub{color:var(--txt-lm)}
-.sep{height:1px;background:linear-gradient(90deg,transparent,rgba(200,164,90,.1),var(--gold),rgba(200,164,90,.1),transparent)}
+/* ─────────────────────────────────────────────────────────────
+   RESET
+──────────────────────────────────────────────────────────────*/
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--or);color:var(--bleu)}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--creme);
+  color:var(--bleu);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-/* FULL-WIDTH IMAGE BREAK */
-.img-break{position:relative;height:clamp(250px,35vw,400px);overflow:hidden}
-.img-break img{width:100%;height:100%;object-fit:cover}
-.img-break__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,var(--ink) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.3) 60%,var(--ink) 100%)}
-.img-break__text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 var(--pad)}
-.img-break__text p{font-family:var(--fh);font-size:clamp(1.2rem,2.5vw,2rem);font-weight:300;font-style:italic;color:var(--ivory);letter-spacing:.04em;max-width:700px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
-/* When transitioning to light section */
-.img-break--to-lt .img-break__overlay{background:linear-gradient(to bottom,var(--ink) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.3) 60%,var(--ivory) 100%)}
-.img-break--to-cr .img-break__overlay{background:linear-gradient(to bottom,var(--ink) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.3) 60%,var(--cream) 100%)}
-.img-break--lt-to-dk .img-break__overlay{background:linear-gradient(to bottom,var(--ivory) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.3) 60%,var(--ink) 100%)}
-.img-break--cr-to-dk .img-break__overlay{background:linear-gradient(to bottom,var(--cream) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.3) 60%,var(--ink) 100%)}
-.img-break--lt-to-cr .img-break__overlay{background:linear-gradient(to bottom,var(--ivory) 0%,rgba(245,240,232,.4) 40%,rgba(245,240,232,.4) 60%,var(--cream) 100%)}
-.img-break--cr-to-lt .img-break__overlay{background:linear-gradient(to bottom,var(--cream) 0%,rgba(250,248,244,.4) 40%,rgba(250,248,244,.4) 60%,var(--ivory) 100%)}
+/* ─────────────────────────────────────────────────────────────
+   SCROLL REVEAL — base states
+──────────────────────────────────────────────────────────────*/
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .9s var(--ease-silk), transform .9s var(--ease-silk);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{
+  opacity:0;transform:translateX(-32px);
+  transition:opacity .9s var(--ease-silk), transform .9s var(--ease-silk);
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{
+  opacity:0;transform:scale(.96);
+  transition:opacity .8s var(--ease-silk), transform .8s var(--ease-silk);
+}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
 
-/* BTN */
-.btn{font-family:var(--fb);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 36px;border:none;cursor:pointer;transition:all .4s var(--ease);display:inline-block}
-.btn--g{background:var(--gold);color:var(--ink)}.btn--g:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,90,.3)}
-.btn--o{background:transparent;color:var(--ivory);border:1px solid rgba(255,255,255,.2)}.btn--o:hover{border-color:var(--gold);color:var(--gold)}
-.btn--od{background:transparent;color:var(--ink);border:1px solid rgba(0,0,0,.2)}.btn--od:hover{border-color:var(--gold-dk);color:var(--gold-dk)}
+/* delays */
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
-/* ═══ NAV ═══ */
-.nav{position:fixed;top:0;left:0;right:0;height:80px;z-index:500;background:rgba(10,10,10,.88);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(200,164,90,.06);transition:all 500ms var(--ease)}
-.nav.sc{background:rgba(10,10,10,.96);border-bottom-color:rgba(200,164,90,.12);box-shadow:0 4px 30px rgba(0,0,0,.3)}
-.nav__i{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:100%;display:flex;align-items:center;justify-content:space-between}
-.nav__logo{font-family:var(--fh);font-size:1.35rem;font-weight:500;letter-spacing:.06em;color:var(--gold)}
-.nav__lk{display:flex;gap:24px;align-items:center}
-.nav__lk a{font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .4s;position:relative;padding:4px 0}
-.nav__lk a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
-.nav__lk a:hover{color:var(--ivory)}.nav__lk a:hover::after{width:100%}
-.nav__lk .jl{color:var(--gold);font-family:var(--fh);font-size:.85rem;letter-spacing:.08em;font-weight:600;text-transform:none}
-.burger{display:none;flex-direction:column;gap:6px;cursor:pointer;background:none;border:none;padding:8px;z-index:600}
-.burger span{width:26px;height:1.5px;background:var(--gold);transition:all .3s var(--ease);transform-origin:center}
-.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-@media(max-width:900px){.nav__lk{position:fixed;inset:0;background:rgba(10,10,10,.97);flex-direction:column;justify-content:center;align-items:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .5s}.nav__lk.open{opacity:1;pointer-events:auto}.nav__lk a{font-size:.9rem}.burger{display:flex}}
+/* ─────────────────────────────────────────────────────────────
+   NAV
+──────────────────────────────────────────────────────────────*/
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .4s, backdrop-filter .4s, padding .4s;
+}
+nav.scrolled{
+  background:rgba(11,17,32,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:1rem 3rem;
+  border-bottom:1px solid rgba(200,164,90,.1);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:300;
+  color:var(--creme);letter-spacing:.18em;
+  text-decoration:none;transition:opacity .3s;
+}
+.nav-logo:hover{opacity:.75}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{
+  font-size:.68rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(250,248,244,.45);
+  text-decoration:none;transition:color .3s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;
+  height:1px;background:var(--or);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease-silk);
+}
+.nav-links a:hover{color:var(--creme)}
+.nav-links a:hover::after{transform:scaleX(1)}
 
-/* ═══ HERO ═══ */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero__img{position:absolute;inset:0}
-.hero__img img{width:100%;height:100%;object-fit:cover;opacity:.25}
-.hero__img::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(10,10,10,.4),var(--ink) 75%)}
-.hero__c{position:relative;text-align:center;padding:120px var(--pad) 80px}
-.hero__o{color:var(--gold);font-size:.85rem;letter-spacing:.4em;margin-bottom:28px;opacity:.6;animation:fadeUp 1s var(--ease) .2s both}
-.hero__tag{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:fadeUp 1s var(--ease) .4s both}
-h1{font-family:var(--fd);font-size:clamp(3.5rem,9vw,7.5rem);font-weight:800;line-height:.92;letter-spacing:-.02em;color:var(--ivory);margin-bottom:32px;animation:fadeUp 1s var(--ease) .6s both}
-.hero__r{font-family:var(--fa);font-size:clamp(1rem,1.8vw,1.25rem);font-style:italic;color:var(--txt-dm);max-width:600px;margin:0 auto 48px;line-height:1.6;animation:fadeUp 1s var(--ease) .8s both}
-.hero__cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s var(--ease) 1s both}
-.hero__sc{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeUp 1s var(--ease) 1.2s both}
-.hero__sc span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-dm)}
-.hero__sc i{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+/* ─────────────────────────────────────────────────────────────
+   HERO
+──────────────────────────────────────────────────────────────*/
+.hero{
+  min-height:100vh;min-height:100dvh;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;padding:6rem 2rem;
+  background:var(--bleu);
+}
 
-/* ═══ BIO ═══ */
-.bio-g{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(40px,6vw,80px);align-items:start}
-.bio-p{position:relative;aspect-ratio:3/4;overflow:hidden;border:1px solid rgba(200,164,90,.2)}
-.bio-p::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);opacity:.12;margin:12px}
-.bio-p img{width:100%;height:100%;object-fit:cover}
-.bio-c h3{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:8px}
-.bio-c .tl{font-family:var(--fa);font-style:italic;color:var(--txt-lm);margin-bottom:24px}
-.bio-c p{color:var(--txt-l);margin-bottom:16px;line-height:1.8}
-.bst{font-family:var(--fh);font-size:1.15rem;font-weight:600;color:var(--gold-dk);margin:28px 0 10px;letter-spacing:.04em}
-.ba{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
-.ba>div{padding:16px;background:var(--white);border:1px solid rgba(200,164,90,.12)}
-.ba .yr{font-family:var(--fh);font-size:1.6rem;font-weight:600;color:var(--gold-dk)}
-.ba .nm{font-size:.85rem;color:var(--txt-lm);line-height:1.4;margin-top:4px}
-.ml li{padding:8px 0 8px 20px;position:relative;font-size:.92rem;color:var(--txt-lm);border-bottom:1px solid rgba(0,0,0,.06)}
-.ml li::before{content:'—';position:absolute;left:0;color:var(--gold-dk)}
-@media(max-width:800px){.bio-g{grid-template-columns:1fr}.bio-p{max-width:350px;margin:0 auto}.ba{grid-template-columns:1fr}}
+/* VIDEO BACKGROUND */
+.hero-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:0;
+  transition:opacity 1.8s ease;
+  pointer-events:none;
+}
+.hero-video.loaded{opacity:1}
 
-/* ═══ AUTEUR ═══ */
-.aut-g{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(40px,6vw,80px);align-items:center}
-.aut-b{max-width:340px;margin:0 auto;filter:drop-shadow(0 20px 60px rgba(0,0,0,.5));transition:transform .6s var(--ease)}.aut-b:hover{transform:translateY(-8px) rotate(-1deg)}
-.aut-c h3{font-family:var(--fd);font-size:1.8rem;font-weight:700;margin-bottom:16px}
-.aut-c p{color:var(--txt-d);margin-bottom:16px;line-height:1.8}
-.aw{margin-top:32px}.aw__i{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.aw__d{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:8px}
-.aw__t{font-family:var(--fh);font-size:1.1rem;font-weight:500}.aw__n{font-size:.82rem;color:var(--txt-dm);margin-top:2px}
-@media(max-width:800px){.aut-g{grid-template-columns:1fr}.aut-b{max-width:260px}}
+/* Overlay double-couche : assombrit + donne grain cinématique */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(8,13,24,.55) 0%,
+      rgba(8,13,24,.68) 60%,
+      rgba(8,13,24,.85) 100%);
+  z-index:1;
+}
+/* grain statique SVG inline — fibre organique */
+.hero-grain{
+  position:absolute;inset:0;z-index:2;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  pointer-events:none;
+}
 
-/* ═══ ARTICLES — NYT STYLE ═══ */
-.nyt-hero{position:relative;margin-bottom:48px}
-.nyt-hero__img{width:100%;aspect-ratio:21/9;overflow:hidden}
-.nyt-hero__img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.nyt-hero:hover .nyt-hero__img img{transform:scale(1.02)}
-.nyt-hero__content{padding:32px 0 0}
-.nyt-hero__cat{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:12px;display:inline-block;border-bottom:2px solid var(--gold-dk);padding-bottom:4px}
-.nyt-hero__title{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:16px}
-.nyt-hero__excerpt{font-family:var(--fa);font-size:1.05rem;font-style:italic;color:var(--txt-lm);line-height:1.7;margin-bottom:16px;max-width:700px}
-.nyt-hero__meta{font-size:.82rem;color:var(--txt-lm);display:flex;gap:12px;align-items:center}
-.nyt-hero__meta::before{content:'';width:28px;height:1px;background:var(--gold-dk)}
+/* Lueur dorée centrale */
+.hero-glow{
+  position:absolute;z-index:2;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,164,90,.055) 0%,transparent 68%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
 
-.nyt-grid{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0}
-.nyt-divider{background:rgba(0,0,0,.1)}
-.nyt-article{padding:0 clamp(16px,2vw,32px)}
-.nyt-article__img{width:100%;aspect-ratio:4/3;overflow:hidden;margin-bottom:16px}
-.nyt-article__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.nyt-article:hover .nyt-article__img img{transform:scale(1.03)}
-.nyt-article__cat{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:8px}
-.nyt-article__title{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:10px}
-.nyt-article__excerpt{font-size:.88rem;color:var(--txt-lm);line-height:1.6;margin-bottom:12px}
-.nyt-article__meta{font-size:.75rem;color:var(--txt-lm);padding-top:12px;border-top:1px solid rgba(0,0,0,.06)}
+.hero-content{position:relative;z-index:3}
 
-.nyt-row{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;margin-top:32px;padding-top:32px;border-top:1px solid rgba(0,0,0,.08)}
-.nyt-row .nyt-article{padding:0 clamp(16px,2vw,32px)}
+.hero-eyebrow{
+  font-size:.6rem;font-weight:400;
+  letter-spacing:.55em;text-transform:uppercase;
+  color:var(--or);margin-bottom:2.2rem;
+  opacity:0;animation:fadeUp .8s var(--ease-silk) forwards .2s;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,9vw,7rem);
+  font-weight:300;color:var(--creme);
+  letter-spacing:.1em;line-height:1.05;
+  opacity:0;animation:fadeUp 1.2s var(--ease-silk) forwards .5s;
+}
+.hero-divider{
+  display:flex;align-items:center;gap:1.2rem;
+  justify-content:center;margin:2rem auto;
+  opacity:0;animation:fadeIn .8s ease forwards 1.2s;
+}
+.hero-divider span{
+  width:0;height:1px;background:var(--or);
+  animation:lineGrow 1s var(--ease-silk) forwards 1.3s;
+}
+.hero-divider-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--or);opacity:.7;
+}
+@keyframes lineGrow{to{width:48px}}
+@keyframes fadeIn{to{opacity:1}}
 
-@media(max-width:900px){.nyt-grid{grid-template-columns:1fr;gap:28px}.nyt-divider{display:none}.nyt-article{padding:0;border-bottom:1px solid rgba(0,0,0,.06);padding-bottom:28px}.nyt-row{grid-template-columns:1fr}}
+.hero-roles{
+  font-size:.68rem;font-weight:400;
+  letter-spacing:.38em;text-transform:uppercase;
+  color:rgba(250,248,244,.55);
+  opacity:0;animation:fadeUp 1s var(--ease-silk) forwards 1.5s;
+  line-height:2;
+}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  opacity:0;animation:fadeIn 1s ease forwards 2.2s;
+}
+.hero-scroll span{
+  font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(250,248,244,.3);
+}
+.scroll-line{
+  width:1px;height:36px;background:linear-gradient(to bottom,rgba(200,164,90,.6),transparent);
+  animation:scrollPulse 2.5s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.4;transform:scaleY(.8)}
+  50%{opacity:1;transform:scaleY(1)}
+}
 
-/* ═══ JABRILIA SECTION ═══ */
-.jbs{background:var(--ink);position:relative;overflow:hidden}
-.jbs::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(200,164,90,.06),transparent 60%)}
-.jbi{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative}
-.jbt h3{font-family:var(--fh);font-size:2.4rem;font-weight:300;letter-spacing:.08em;color:var(--gold);margin-bottom:8px}
-.jbt h3 b{font-weight:600}
-.jbt .sub{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-dm);margin-bottom:24px}
-.jbt p{color:var(--txt-d);line-height:1.8;margin-bottom:16px}
-.jbk{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.jbc{aspect-ratio:2/3;overflow:hidden;border:1px solid rgba(200,164,90,.08);transition:all .5s var(--ease);position:relative}
-.jbc:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(200,164,90,.15);border-color:rgba(200,164,90,.3)}
-.jbc img{width:100%;height:100%;object-fit:cover}
-.jba{margin-top:32px;display:flex;gap:16px}
-@media(max-width:800px){.jbi{grid-template-columns:1fr}.jbk{gap:12px}}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
-/* ═══ CONFS ═══ */
-.cfg{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.cfg__img{aspect-ratio:16/10;overflow:hidden;margin-bottom:28px;border:1px solid rgba(0,0,0,.06)}
-.cfg__img img{width:100%;height:100%;object-fit:cover}
-.cc h3{font-family:var(--fd);font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:8px}
-.cc .ci{font-family:var(--fa);font-style:italic;color:var(--txt-lm);margin-bottom:24px}
-.cc p{color:var(--txt-l);margin-bottom:16px;line-height:1.8}
-.co__i{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.06)}
-.co__n{font-family:var(--fh);font-size:1.6rem;font-weight:300;color:var(--gold-dk);flex-shrink:0;width:40px}
-.co__t{font-size:.95rem;color:var(--txt-l);line-height:1.6}
-.inst{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.inst span{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border:1px solid rgba(0,0,0,.1);color:var(--txt-lm)}
-@media(max-width:800px){.cfg{grid-template-columns:1fr}}
+/* ─────────────────────────────────────────────────────────────
+   SECTION STRUCTURE
+──────────────────────────────────────────────────────────────*/
+.section-label{
+  font-size:.58rem;font-weight:500;
+  letter-spacing:.45em;text-transform:uppercase;
+  color:var(--or);margin-bottom:3.5rem;
+}
+.section-label-center{text-align:center}
 
-/* ═══ TESTIMONIAL ═══ */
-.tq{text-align:center;max-width:750px;margin:0 auto}
-.tq__q{font-family:var(--fa);font-size:clamp(1.1rem,2vw,1.35rem);font-style:italic;line-height:1.8;margin-bottom:28px;color:var(--txt-d)}
-.tq__q::before{content:'\201C';font-family:var(--fd);font-size:4rem;color:var(--gold);display:block;line-height:1;margin-bottom:8px}
-.tq__a{font-weight:600;font-size:.9rem;color:var(--gold)}.tq__r{font-size:.82rem;margin-top:4px;color:var(--txt-dm)}
+/* ─────────────────────────────────────────────────────────────
+   BIO
+──────────────────────────────────────────────────────────────*/
+.bio{
+  background:var(--creme);
+  padding:9rem 5rem;
+  max-width:960px;margin:0 auto;
+}
+.bio-inner{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:5rem;
+  align-items:start;
+}
+.bio-sidebar{
+  position:sticky;top:8rem;
+}
+.bio-sidebar-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:300;
+  color:var(--bleu);letter-spacing:.15em;
+  margin-bottom:.8rem;
+}
+.bio-sidebar-rule{
+  width:28px;height:1px;background:var(--or);margin-bottom:1.5rem;
+}
+.bio-sidebar-roles{
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.bio-sidebar-role{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gris);line-height:1.5;
+}
+.bio-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.15rem,2.2vw,1.55rem);
+  font-weight:300;line-height:1.85;
+  color:var(--bleu);margin-bottom:1.8rem;
+}
+.bio-text:last-child{margin-bottom:0}
+.bio-text strong{font-weight:500}
+.bio-text em{font-style:italic;color:var(--or-sombre)}
 
-/* ═══ NEWSLETTER ═══ */
-.nl{text-align:center;max-width:550px;margin:0 auto}
-.nl h3{font-family:var(--fd);font-size:1.8rem;color:var(--ink);margin-bottom:8px}
-.nl p{color:var(--txt-lm);margin-bottom:28px}
-.nf{display:flex;gap:12px;max-width:480px;margin:0 auto}
-.nf input{flex:1;padding:14px 20px;border:1px solid rgba(0,0,0,.12);background:var(--white);font-family:var(--fb);font-size:.92rem;color:var(--ink);outline:none;transition:border-color .3s}
-.nf input:focus{border-color:var(--gold-dk)}.nf input::placeholder{color:var(--txt-lm)}
-@media(max-width:600px){.nf{flex-direction:column}}
+/* ─────────────────────────────────────────────────────────────
+   ENTREPRISES BAND
+──────────────────────────────────────────────────────────────*/
+.entreprises{
+  background:var(--bleu-mid);
+  padding:5.5rem 2rem;
+  border-top:1px solid rgba(200,164,90,.1);
+  border-bottom:1px solid rgba(200,164,90,.1);
+}
+.entreprises-inner{
+  max-width:900px;margin:0 auto;
+}
+.entreprises-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2rem;
+}
+.ent-item{
+  display:flex;flex-direction:column;gap:.7rem;
+  padding:1.8rem;
+  border:1px solid rgba(200,164,90,.1);
+  transition:border-color .35s, background .35s;
+  cursor:default;
+}
+.ent-item:hover{
+  border-color:rgba(200,164,90,.35);
+  background:rgba(200,164,90,.04);
+}
+.ent-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:400;
+  color:var(--creme);letter-spacing:.08em;
+}
+.ent-desc{
+  font-size:.65rem;letter-spacing:.08em;
+  color:var(--gris);line-height:1.6;
+}
+.ent-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--or);opacity:.6;margin-top:auto;
+}
 
-/* ═══ CONTACT ═══ */
-.ctg{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.cti h3{font-family:var(--fd);font-size:1.8rem;margin-bottom:16px}
-.cti p{color:var(--txt-dm);line-height:1.8;margin-bottom:20px}
-.cti a{display:block;color:var(--gold);font-size:.95rem;margin-bottom:10px;transition:color .3s}.cti a:hover{color:var(--gold-lt)}
-.ctf{display:flex;flex-direction:column;gap:16px}
-.ctf input,.ctf textarea{padding:14px 20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--ivory);font-family:var(--fb);font-size:.92rem;outline:none;transition:border-color .3s;resize:vertical}
-.ctf input:focus,.ctf textarea:focus{border-color:var(--gold)}.ctf input::placeholder,.ctf textarea::placeholder{color:var(--txt-dm)}
-@media(max-width:800px){.ctg{grid-template-columns:1fr}}
+/* ─────────────────────────────────────────────────────────────
+   DISTINCTIONS
+──────────────────────────────────────────────────────────────*/
+.distinctions{
+  background:var(--bleu);
+  padding:9rem 2rem;
+}
+.dist-grid{
+  max-width:860px;margin:0 auto;
+  display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;
+}
+.distinction-item{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:1.2rem;
+  min-width:110px;
+}
+.distinction-icon{
+  width:54px;height:54px;opacity:.8;
+  transition:opacity .3s, transform .4s var(--ease-silk);
+}
+.distinction-item:hover .distinction-icon{
+  opacity:1;transform:translateY(-3px);
+}
+.distinction-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.92rem;font-weight:400;
+  color:var(--creme);line-height:1.5;
+}
+.distinction-sub{
+  font-size:.6rem;color:var(--gris);
+  letter-spacing:.08em;margin-top:.15rem;
+}
 
-/* ═══ FOOTER ═══ */
-.ft{background:var(--ink);border-top:1px solid rgba(200,164,90,.08);padding:48px 0 32px;text-align:center}
-.ft__l{font-family:var(--fh);font-size:1.1rem;color:var(--gold);letter-spacing:.06em;margin-bottom:16px}
-.ft__lk{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-.ft__lk a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-dm);transition:color .3s}.ft__lk a:hover{color:var(--gold)}
-.ft__c{font-size:.78rem;color:var(--txt-dm)}
+.dist-sep{
+  max-width:860px;margin:4rem auto 0;
+  height:1px;background:rgba(200,164,90,.12);
+}
+.dist-stats{
+  max-width:600px;margin:4rem auto 0;
+  display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NEWSLETTER
+──────────────────────────────────────────────────────────────*/
+.newsletter{
+  background:var(--creme-soft);
+  padding:8rem 2rem;
+  position:relative;overflow:hidden;
+}
+.newsletter::before{
+  content:'';position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,164,90,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.newsletter-inner{
+  max-width:600px;margin:0 auto;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.newsletter-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:300;color:var(--bleu);
+  letter-spacing:.04em;margin-bottom:1rem;
+  line-height:1.2;
+}
+.newsletter-sub{
+  font-size:.8rem;color:var(--gris);
+  letter-spacing:.08em;line-height:1.7;
+  margin-bottom:2.8rem;
+}
+.newsletter-form{
+  display:flex;gap:0;
+  max-width:440px;margin:0 auto;
+}
+.newsletter-input{
+  flex:1;
+  padding:.95rem 1.4rem;
+  background:#fff;
+  border:1px solid rgba(11,17,32,.15);
+  border-right:none;
+  font-family:'DM Sans',sans-serif;
+  font-size:.78rem;letter-spacing:.04em;
+  color:var(--bleu);
+  outline:none;
+  transition:border-color .3s;
+  -webkit-appearance:none;
+}
+.newsletter-input::placeholder{color:rgba(107,122,148,.55)}
+.newsletter-input:focus{border-color:var(--or)}
+.newsletter-btn{
+  padding:.95rem 1.8rem;
+  background:var(--or);
+  border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:.68rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--bleu);
+  transition:background .3s, color .3s;
+  white-space:nowrap;
+}
+.newsletter-btn:hover{background:var(--or-clair)}
+.newsletter-note{
+  font-size:.6rem;color:var(--gris);
+  letter-spacing:.06em;margin-top:1.2rem;
+  opacity:.7;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CONTACT
+──────────────────────────────────────────────────────────────*/
+.contact{
+  background:var(--bleu);
+  padding:8rem 2rem;
+  text-align:center;
+}
+.contact .section-label{opacity:.6}
+.contact-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:300;color:var(--creme);
+  letter-spacing:.04em;margin-bottom:.8rem;
+}
+.contact-sub{
+  font-size:.75rem;color:var(--gris);
+  letter-spacing:.1em;margin-bottom:3rem;
+}
+.contact-links{
+  display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;
+}
+.contact-link{
+  font-size:.68rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--creme);text-decoration:none;
+  padding-bottom:5px;
+  border-bottom:1px solid rgba(200,164,90,.35);
+  transition:color .3s, border-color .3s;
+}
+.contact-link:hover{color:var(--or);border-color:var(--or)}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER
+──────────────────────────────────────────────────────────────*/
+footer{
+  background:var(--bleu);
+  padding:3rem 2rem;
+  text-align:center;
+  border-top:1px solid rgba(200,164,90,.08);
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.9rem;font-weight:300;
+  color:rgba(250,248,244,.25);
+  letter-spacing:.2em;margin-bottom:1.2rem;
+  display:block;
+}
+.footer-copy{
+  font-size:.6rem;color:rgba(107,122,148,.6);
+  letter-spacing:.12em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+──────────────────────────────────────────────────────────────*/
+@media(max-width:900px){
+  .bio{padding:7rem 2.5rem}
+  .bio-inner{grid-template-columns:1fr;gap:3rem}
+  .bio-sidebar{position:static}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:4rem 1.5rem}
+  .bio{padding:6rem 1.5rem}
+  .entreprises-grid{grid-template-columns:repeat(2,1fr)}
+  .distinctions{padding:7rem 1.5rem}
+  .dist-grid{gap:3rem}
+  .newsletter{padding:6rem 1.5rem}
+  .newsletter-form{flex-direction:column}
+  .newsletter-input{border-right:1px solid rgba(11,17,32,.15);border-bottom:none}
+  .contact{padding:6rem 1.5rem}
+  .contact-links{gap:2rem}
+}
+@media(max-width:480px){
+  .entreprises-grid{grid-template-columns:1fr}
+  .dist-grid{gap:2.5rem}
+  .dist-stats{gap:2.5rem}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav"><div class="nav__i"><a href="#accueil" class="nav__logo">Steve Moradel</a><div class="nav__lk" id="navLinks"><a href="#biographie">Biographie</a><a href="#auteur">Auteur</a><a href="#articles">Editos</a><a href="#conferences">Conférences</a><a href="#contact">Contact</a><a href="https://www.jabrilia.com" target="_blank" class="jl">Jabrilia</a></div><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+<!-- ═══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Steve Moradel</a>
+  <div class="nav-links">
+    <a href="#bio">Bio</a>
+    <a href="#distinctions">Distinctions</a>
+    <a href="#newsletter">Lettre</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="accueil">
-  <div class="hero__img">
-    <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=1920&q=80&auto=format" alt="">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(10,10,10,.5),var(--ink) 75%)"></div>
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — vidéo océan
+════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+
+  <!-- 
+    VIDÉO RUNWAY : remplace le src ci-dessous par le chemin de ta vidéo.
+    Format recommandé : MP4 H.264, 1920×1080, ~10–15 Mo max.
+    Exemple : src="./hero-ocean.mp4"
+    La vidéo apparaît en fondu dès qu'elle est prête (event canplaythrough).
+  -->
+  <video
+    class="hero-video"
+    id="heroVideo"
+    autoplay muted loop playsinline
+    preload="auto"
+    src="./hero-ocean.mp4"
+  ></video>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Écrivain · Entrepreneur · Stratège</p>
+    <h1 class="hero-name">Steve Moradel</h1>
+    <div class="hero-divider">
+      <span></span>
+      <div class="hero-divider-dot"></div>
+      <span></span>
+    </div>
+    <p class="hero-roles">Conférencier · Fondateur · Auteur</p>
   </div>
-  <div class="hero__c">
-    <div class="hero__o">— ✦ —</div>
-    <div class="hero__tag">Écrivain · Stratège · Penseur</div>
-    <h1>Steve<br>Moradel</h1>
-    <p class="hero__r">Analyste des mutations contemporaines,<br>il explore les « plaies du monde » à travers l'écriture,<br>la pensée stratégique et l'engagement.</p>
-    <div class="hero__cta"><a href="#biographie" class="btn btn--g">Découvrir</a><a href="#articles" class="btn btn--o">Lire les editos</a></div>
+
+  <div class="hero-scroll">
+    <span>Découvrir</span>
+    <div class="scroll-line"></div>
   </div>
-  <div class="hero__sc"><span>Défiler</span><i></i></div>
 </section>
 
-<!-- ═══ IMAGE BREAK → LIGHT ═══ -->
-<div class="img-break img-break--to-lt">
-  <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1600&q=80&auto=format" alt="">
-  <div class="img-break__overlay"></div>
-  <div class="img-break__text"><p>« L'écriture est l'art de donner un corps aux silences. »</p></div>
-</div>
+<!-- ═══════════════════════════════════════════════════════════
+     BIO
+════════════════════════════════════════════════════════════ -->
+<section id="bio">
+  <div class="bio">
+    <div class="bio-inner">
 
-<!-- ═══ BIO ═══ -->
-<section class="sec sec--lt" id="biographie"><div class="ctn">
-  <div class="sh rv"><p class="lab">Biographie</p><h2>Parcours & Engagements</h2><div class="dv"></div><p class="sub">Un intellectuel engagé à la croisée des mondes</p></div>
-  <div class="bio-g">
-    <div class="bio-p rv"><img src="https://static.wixstatic.com/media/2ac949_e8c76cada1414a47bfced80a711459c4~mv2.jpg/v1/fill/w_600,h_800,al_c,q_80,enc_avif,quality_auto/2ac949_e8c76cada1414a47bfced80a711459c4~mv2.jpg" alt="Steve Moradel"></div>
-    <div class="bio-c rv d1">
-      <h3>Naviguer les mutations du monde</h3>
-      <p class="tl">Écrivain, penseur et analyste des mutations contemporaines</p>
-      <p>Steve Moradel développe une approche interdisciplinaire qui allie création littéraire et analyse stratégique dans les domaines de l'économie, de la géopolitique, de l'intelligence artificielle et des sciences sociales.</p>
-      <h4 class="bst">Un parcours interdisciplinaire</h4>
-      <p>Diplômé en Stratégie et Management des Organisations ainsi qu'en Sciences Humaines et Sociales, Steve Moradel a d'abord évolué dans l'entrepreneuriat technologique, fondant plusieurs entreprises. Son expertise l'a conduit à conseiller des chefs d'entreprises de grands groupes internationaux et institutions prestigieuses.</p>
-      <h4 class="bst">L'écriture comme exploration du monde</h4>
-      <p>Auteur du roman <em>Sur les hauteurs des chutes du Niagara</em>, il explore les thématiques de la résilience, de la liberté et de la quête d'identité. Ses écrits, cités dans plusieurs revues internationales, contribuent à la réflexion sur les transformations sociétales contemporaines.</p>
-      <h4 class="bst">Transmission et engagement</h4>
-      <p>Steve Moradel concrétise son engagement par la fondation de l'ONG Acting For Water, reconnue par les Nations Unies. Il intervient comme enseignant, jury et conférencier dans des institutions telles que l'ESSEC, l'INSEEC et Audencia.</p>
-      <div class="ba"><div><div class="yr">2018</div><div class="nm">Personnalité de l'année OMN, avec le BCG et BPI</div></div><div><div class="yr">2020</div><div class="nm">LinkedIn Top Voices</div></div><div><div class="yr">2022</div><div class="nm">Chevalier de l'Ordre National du Mérite</div></div><div><div class="yr">2024</div><div class="nm">Prix de l'Africanité</div></div></div>
-      <h4 class="bst">Mandats</h4>
-      <ul class="ml"><li>Membre du comité Stratégique du SMIB, ESSEC depuis Avril 2016</li><li>Président du Jury pour les admissions du SMIB à l'ESSEC, 2018–2019</li><li>Membre du comité stratégique APOLLO, Ministère de l'Industrie, 2020–2022</li><li>Membre du comité consultatif — Ministère de l'Égalité, 2021–2022</li><li>Administrateur, Prométhée Education</li><li>Membre du comité Stratégique, Les Déterminés</li><li>Membre du comité stratégique du Fonds Bayard</li></ul>
+      <!-- SIDEBAR -->
+      <aside class="bio-sidebar reveal-left">
+        <div class="section-label">Biographie</div>
+        <div class="bio-sidebar-name">Steve Moradel</div>
+        <div class="bio-sidebar-rule"></div>
+        <div class="bio-sidebar-roles">
+          <span class="bio-sidebar-role">Écrivain</span>
+          <span class="bio-sidebar-role">Entrepreneur</span>
+          <span class="bio-sidebar-role">Stratège</span>
+          <span class="bio-sidebar-role">Conférencier</span>
+        </div>
+      </aside>
+
+      <!-- CORPS -->
+      <div>
+        <p class="bio-text reveal d1">
+          Steve Moradel est un <strong>écrivain</strong>, <strong>entrepreneur</strong> et <strong>stratège</strong> français. Il explore les grandes transitions de notre époque à travers un prisme rare : celui qui relie la littérature, la stratégie, la géopolitique et l'intelligence artificielle.
+        </p>
+        <p class="bio-text reveal d2">
+          Entrepreneur dans la technologie, il a fondé et dirigé plusieurs entreprises, dont <strong>Pulsar</strong>, plateforme d'aide à la décision clinique en neuropédiatrie, et <strong>Bemersive</strong>, studio spécialisé en spatial computing et solutions immersives. Il crée également <strong>Jabrilia Éditions</strong>, maison d'édition portant une littérature au cœur des grandes transitions humaines, et fonde <strong>Prisme</strong>, média indépendant d'analyse et de décryptage.
+        </p>
+        <p class="bio-text reveal d3">
+          En parallèle, il fait bénéficier de sa vision pluridisciplinaire des dirigeants de grands groupes internationaux et des institutions — les accompagnant dans la transformation de leurs organisations, l'anticipation des mutations sociétales et la gouvernance de leurs enjeux critiques. Son approche, singulière, intègre la dimension humaine et émotionnelle au cœur des décisions stratégiques.
+        </p>
+        <p class="bio-text reveal d4">
+          Diplômé en <em>Stratégie et Management des Organisations</em> et en <em>Sciences Humaines et Sociales</em>, il enseigne et intervient dans des institutions de premier plan : <strong>ESSEC</strong>, <strong>INSEEC</strong>, <strong>Audencia</strong>. Ses analyses — plus d'une centaine d'articles sur la souveraineté maritime, l'économie bleue, les mutations technologiques et leurs impacts sociétaux — sont citées dans plusieurs revues internationales.
+        </p>
+        <p class="bio-text reveal d5">
+          En 2021, il publie <em>Sur les hauteurs des chutes du Niagara</em>, une fresque romanesque sur l'esclavage saluée par la critique, marquant son entrée en littérature. L'année 2026 verra la parution d'un essai philosophique et d'un deuxième roman.
+        </p>
+        <p class="bio-text reveal d6">
+          Membre fondateur du <strong>World with Women</strong> et fondateur d'<strong>Acting For Water</strong>, ONG reconnue par les Nations Unies, il affirme un engagement constant pour un monde plus équitable.
+        </p>
+      </div>
+
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- ═══ IMAGE BREAK → DARK ═══ -->
-<div class="img-break img-break--lt-to-dk">
-  <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600&q=80&auto=format" alt="">
-  <div class="img-break__overlay"></div>
-</div>
-
-<!-- ═══ AUTEUR ═══ -->
-<section class="sec sec--dk" id="auteur"><div class="ctn">
-  <div class="sh rv"><p class="lab">Auteur</p><h2>L'écriture en héritage</h2><div class="dv"></div><p class="sub">Une quête de sens et de partage</p></div>
-  <div class="aut-g rv">
-    <div><img src="https://static.wixstatic.com/media/2ac949_31ac655cd4c94791a937af8578c566ff~mv2.png/v1/fill/w_500,h_710,al_c,q_90,enc_avif,quality_auto/2ac949_31ac655cd4c94791a937af8578c566ff~mv2.png" alt="Sur les hauteurs des chutes du Niagara" class="aut-b"></div>
-    <div class="aut-c">
-      <h3>L'écriture comme vocation profonde</h3>
-      <p>Steve Moradel est un auteur passionné pour qui l'écriture a toujours occupé une place centrale. Il considère l'écriture comme une manière unique d'explorer les grandes thématiques humaines.</p>
-      <p>Son premier roman, <em>Sur les hauteurs des chutes du Niagara</em>, a rencontré un franc succès, devenant rapidement un best-seller.</p>
-      <div class="aw">
-        <div class="aw__i"><div class="aw__d"></div><div><div class="aw__t">Sur les hauteurs des chutes du Niagara</div><div class="aw__n">Roman — Best-seller — Jabrilia Éditions</div></div></div>
-        <div class="aw__i"><div class="aw__d"></div><div><div class="aw__t">Dans les failles du siècle</div><div class="aw__n">Essai philosophique — Avril 2026</div></div></div>
-        <div class="aw__i"><div class="aw__d"></div><div><div class="aw__t">Les mémoires reliées</div><div class="aw__n">Roman — Septembre 2026</div></div></div>
-        <div class="aw__i"><div class="aw__d"></div><div><div class="aw__t">Hommage au Petit Prince — 80 ans, 80 talents</div><div class="aw__n">Ouvrage collectif</div></div></div>
-        <div class="aw__i"><div class="aw__d"></div><div><div class="aw__t">L'art de bâtir une équipe</div><div class="aw__n">Contribution — Gérald Karsenti, 2022</div></div></div>
+<!-- ═══════════════════════════════════════════════════════════
+     ENTREPRISES
+════════════════════════════════════════════════════════════ -->
+<div class="entreprises">
+  <div class="entreprises-inner">
+    <div class="section-label reveal">Entreprises fondées</div>
+    <div class="entreprises-grid">
+      <div class="ent-item reveal d1">
+        <div class="ent-name">Pulsar</div>
+        <div class="ent-desc">Aide à la décision clinique en neuropédiatrie</div>
+        <div class="ent-dot"></div>
+      </div>
+      <div class="ent-item reveal d2">
+        <div class="ent-name">Bemersive</div>
+        <div class="ent-desc">Spatial computing & solutions immersives</div>
+        <div class="ent-dot"></div>
+      </div>
+      <div class="ent-item reveal d3">
+        <div class="ent-name">Jabrilia Éditions</div>
+        <div class="ent-desc">Maison d'édition littéraire & transitions humaines</div>
+        <div class="ent-dot"></div>
+      </div>
+      <div class="ent-item reveal d4">
+        <div class="ent-name">Prisme</div>
+        <div class="ent-desc">Média indépendant d'analyse & décryptage</div>
+        <div class="ent-dot"></div>
       </div>
     </div>
   </div>
-</div></section>
-
-<!-- ═══ IMAGE BREAK → CREAM ═══ -->
-<div class="img-break img-break--to-cr">
-  <img src="https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=1600&q=80&auto=format" alt="">
-  <div class="img-break__overlay"></div>
-  <div class="img-break__text"><p>« Comprendre le monde qui se transforme »</p></div>
 </div>
 
-<!-- ═══ ARTICLES — NYT STYLE ═══ -->
-<section class="sec sec--cr" id="articles"><div class="ctn">
-  <div class="sh rv"><p class="lab">Editos & Analyses</p><h2>Comprendre le monde<br>qui se transforme</h2><div class="dv"></div><p class="sub">Géopolitique, économie, écologie, éducation et innovation</p></div>
+<!-- ═══════════════════════════════════════════════════════════
+     DISTINCTIONS
+════════════════════════════════════════════════════════════ -->
+<section class="distinctions" id="distinctions">
+  <div class="section-label section-label-center reveal">Distinctions</div>
 
-  <!-- HERO ARTICLE -->
-  <a href="/articles/quand-le-pouvoir-ne-se-voit-plus.html" class="nyt-hero rv">
-    <div class="nyt-hero__img"><img src="https://static.wixstatic.com/media/2ac949_a774d70b22ab484faab3b87179e81bca~mv2.png/v1/fill/w_1200,h_520,fp_0.50_0.50,q_90,enc_avif,quality_auto/2ac949_a774d70b22ab484faab3b87179e81bca~mv2.webp" alt=""></div>
-    <div class="nyt-hero__content">
-      <div class="nyt-hero__cat">Technologie</div>
-      <h3 class="nyt-hero__title">Quand le pouvoir ne se voit plus</h3>
-      <p class="nyt-hero__excerpt">Le pouvoir ne se mesure plus en valorisation, mais en dépendance. Ce qui compte, c'est devenir impossible à remplacer.</p>
-      <div class="nyt-hero__meta">7 février 2026 · 3 min de lecture</div>
+  <div class="dist-grid">
+
+    <div class="distinction-item reveal d1">
+      <svg class="distinction-icon" width="54" height="54" viewBox="0 0 56 56" fill="none">
+        <g stroke="#C8A45A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.5 8 L28 19.5 L35.5 8"/>
+          <circle cx="28" cy="31" r="10"/>
+          <circle cx="28" cy="31" r="6"/>
+          <path d="M28 25.5 L29.7 29.2 L33.7 29.6 L30.7 32.2 L31.6 36.1 L28 34.1 L24.4 36.1 L25.3 32.2 L22.3 29.6 L26.3 29.2 Z"/>
+        </g>
+      </svg>
+      <div>
+        <div class="distinction-title">Chevalier de l'Ordre<br>National du Mérite</div>
+      </div>
     </div>
-  </a>
 
-  <!-- 3-COLUMN GRID -->
-  <div class="nyt-grid rv">
-    <a href="/articles/la-fenetre-d-overton.html" class="nyt-article">
-      <div class="nyt-article__img"><img src="https://static.wixstatic.com/media/2ac949_83d8b58e94134a028f98caaa8b36a0a5~mv2.png/v1/fill/w_600,h_450,q_90,enc_avif,quality_auto/2ac949_83d8b58e94134a028f98caaa8b36a0a5~mv2.png" alt=""></div>
-      <div class="nyt-article__cat">Sociétal</div>
-      <div class="nyt-article__title">La Fenêtre d'Overton, ou comment l'impensable devient acceptable</div>
-      <div class="nyt-article__meta">10 mai 2025 · 8 min</div>
-    </a>
-    <div class="nyt-divider"></div>
-    <a href="/articles/la-france-face-a-la-loi-des-empires.html" class="nyt-article">
-      <div class="nyt-article__img"><img src="https://static.wixstatic.com/media/2ac949_cd9f14f3ca2e49f4bb74b1b7e2b2b3b4~mv2.png/v1/fill/w_600,h_450,q_90,enc_avif,quality_auto/2ac949_cd9f14f3ca2e49f4bb74b1b7e2b2b3b4~mv2.png" alt=""></div>
-      <div class="nyt-article__cat">Géopolitique</div>
-      <div class="nyt-article__title">La France face à la loi des empires</div>
-      <div class="nyt-article__meta">2 mai 2025 · 9 min</div>
-    </a>
-    <div class="nyt-divider"></div>
-    <a href="/articles/dans-la-nuit-de-caracas.html" class="nyt-article">
-      <div class="nyt-article__img"><img src="https://static.wixstatic.com/media/2ac949_5e4d8f2a7e9f4d2a8b1e9c3d4f6a7b8c~mv2.png/v1/fill/w_600,h_450,q_90,enc_avif,quality_auto/2ac949_5e4d8f2a7e9f4d2a8b1e9c3d4f6a7b8c~mv2.png" alt=""></div>
-      <div class="nyt-article__cat">Géopolitique</div>
-      <div class="nyt-article__title">Dans la nuit de Caracas, la doctrine Monroe a repris ses droits</div>
-      <div class="nyt-article__meta">3 avril 2025 · 7 min</div>
-    </a>
-  </div>
-
-  <!-- 2-COLUMN ROW -->
-  <div class="nyt-row rv">
-    <a href="/articles/la-preciosite-de-la-vie.html" class="nyt-article">
-      <div class="nyt-article__img"><img src="https://static.wixstatic.com/media/2ac949_8a2c9b3d4e5f6a7b8c9d0e1f2a3b4c5d~mv2.png/v1/fill/w_600,h_450,q_90,enc_avif,quality_auto/2ac949_8a2c9b3d4e5f6a7b8c9d0e1f2a3b4c5d~mv2.png" alt=""></div>
-      <div class="nyt-article__cat">Sociétal</div>
-      <div class="nyt-article__title">La préciosité de la vie</div>
-      <div class="nyt-article__excerpt">Une réflexion sur la fragilité et la beauté de l'existence humaine.</div>
-      <div class="nyt-article__meta">20 février 2025 · 5 min</div>
-    </a>
-    <div class="nyt-divider"></div>
-    <a href="/articles/ynsect-autopsie-d-un-naufrage.html" class="nyt-article">
-      <div class="nyt-article__img"><img src="https://static.wixstatic.com/media/2ac949_2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e~mv2.png/v1/fill/w_600,h_450,q_90,enc_avif,quality_auto/2ac949_2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e~mv2.png" alt=""></div>
-      <div class="nyt-article__cat">Économie</div>
-      <div class="nyt-article__title">Ynsect : Autopsie d'un naufrage à 600 millions d'euros</div>
-      <div class="nyt-article__excerpt">Comment une licorne française s'est effondrée malgré les promesses.</div>
-      <div class="nyt-article__meta">18 février 2025 · 6 min</div>
-    </a>
-  </div>
-
-  <div style="text-align:center;margin-top:48px" class="rv"><a href="/articles/" class="btn btn--od">Voir tous les articles</a></div>
-</div></section>
-
-<!-- ═══ IMAGE BREAK ═══ -->
-<div class="img-break img-break--cr-to-dk">
-  <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1600&q=80&auto=format" alt="">
-  <div class="img-break__overlay"></div>
-</div>
-
-<!-- ═══ JABRILIA ═══ -->
-<section class="sec jbs" id="jabrilia"><div class="ctn">
-  <div class="sh rv"><p class="lab">Maison d'édition</p><h2>Jabrilia Éditions</h2><div class="dv"></div><p class="sub">Éveiller, questionner, inspirer</p></div>
-  <div class="jbi rv">
-    <div class="jbt"><h3><b>Jabrilia</b></h3><div class="sub">Éditeur indépendant</div><p>Jabrilia est une maison d'édition indépendante qui place la littérature au cœur des grandes transitions humaines. Née de la conviction qu'une liberté éditoriale totale permet l'émergence des projets les plus authentiques.</p><p>Elle publie des romans qui racontent, des essais qui éclairent, des bandes dessinées qui révèlent.</p><div class="jba"><a href="https://www.jabrilia.com" target="_blank" class="btn btn--g">Découvrir Jabrilia</a><a href="https://www.jabrilia.com" target="_blank" class="btn btn--o">Le catalogue</a></div></div>
-    <div class="jbk"><div class="jbc"><img src="https://static.wixstatic.com/media/2ac949_03c6d8039bb945c584bec6c2442d3def~mv2.png/v1/fill/w_400,h_580,al_c,q_85,enc_avif,quality_auto/2ac949_03c6d8039bb945c584bec6c2442d3def~mv2.png" alt="Sur les hauteurs des chutes du Niagara"></div><div class="jbc"><img src="https://static.wixstatic.com/media/2ac949_be01d41f3101444391527548b086252f~mv2.png/v1/fill/w_400,h_590,al_c,q_85,enc_avif,quality_auto/2ac949_be01d41f3101444391527548b086252f~mv2.png" alt="Dans les failles du siècle"></div><div class="jbc"><img src="https://static.wixstatic.com/media/2ac949_4c6ffffae954435e8a3899837434e344~mv2.png/v1/fill/w_400,h_580,al_c,q_85,enc_avif,quality_auto/2ac949_4c6ffffae954435e8a3899837434e344~mv2.png" alt="Les mémoires reliées"></div></div>
-  </div>
-</div></section>
-
-<!-- ═══ IMAGE BREAK → LIGHT ═══ -->
-<div class="img-break img-break--to-lt">
-  <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1600&q=80&auto=format" alt="">
-  <div class="img-break__overlay"></div>
-  <div class="img-break__text"><p>« Décrypter · Transmettre · Inspirer »</p></div>
-</div>
-
-<!-- ═══ CONFERENCES ═══ -->
-<section class="sec sec--lt" id="conferences"><div class="ctn">
-  <div class="sh rv"><p class="lab">Conférences</p><h2>Décrypter · Transmettre · Inspirer</h2><div class="dv"></div><p class="sub">Interventions et masterclasses</p></div>
-  <div class="cfg">
-    <div class="cc rv">
-      <h3>Naviguer les mutations du monde</h3>
-      <p class="ci">De l'entrepreneuriat à l'écriture, un parcours de transformation</p>
-      <p>Steve Moradel intervient régulièrement en tant que conférencier pour décrypter les enjeux technologiques, géopolitiques et sociétaux contemporains.</p>
-      <div><div class="co__i"><span class="co__n">01</span><span class="co__t">Décrypter les mutations technologiques, géopolitiques et sociétales</span></div><div class="co__i"><span class="co__n">02</span><span class="co__t">Comprendre les dynamiques de leadership à l'ère de l'incertitude</span></div><div class="co__i"><span class="co__n">03</span><span class="co__t">Explorer les enjeux d'inclusion, de diversité et de transformation culturelle</span></div><div class="co__i"><span class="co__n">04</span><span class="co__t">Repenser l'innovation au service de l'impact social et environnemental</span></div><div class="co__i"><span class="co__n">05</span><span class="co__t">Inspirer par le récit : quand l'écriture éclaire la stratégie</span></div></div>
+    <div class="distinction-item reveal d2">
+      <svg class="distinction-icon" width="54" height="54" viewBox="0 0 56 56" fill="none">
+        <g stroke="#C8A45A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 35 C17 24 39 24 39 35"/>
+          <path d="M20 33 L16 29"/><path d="M23 30.5 L19 26.5"/>
+          <path d="M26 28 L22.5 24.5"/>
+          <path d="M36 33 L40 29"/><path d="M33 30.5 L37 26.5"/>
+          <path d="M30 28 L33.5 24.5"/>
+        </g>
+      </svg>
+      <div>
+        <div class="distinction-title">Prix de l'Africanité</div>
+        <div class="distinction-sub">2024</div>
+      </div>
     </div>
-    <div class="rv d2">
-      <div class="cfg__img"><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80&auto=format" alt="Conférence"></div>
-      <div class="inst"><span>ESSEC Business School</span><span>INSEEC</span><span>Audencia</span><span>Ministère de l'Industrie</span><span>Forum Elan</span><span>Prométhée Education</span><span>BPI France</span></div>
+
+    <div class="distinction-item reveal d3">
+      <svg class="distinction-icon" width="54" height="54" viewBox="0 0 56 56" fill="none">
+        <g stroke="#C8A45A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="28" cy="28" r="4"/>
+          <circle cx="13.5" cy="18.5" r="2"/>
+          <circle cx="42.5" cy="18.5" r="2"/>
+          <circle cx="16.5" cy="41" r="2"/>
+          <circle cx="39.5" cy="41" r="2"/>
+          <path d="M25 26.5 L15.5 20"/><path d="M31 26.5 L40.5 20"/>
+          <path d="M25.5 31 L18 39"/><path d="M30.5 31 L38 39"/>
+          <path d="M28 24 V20.5"/>
+        </g>
+      </svg>
+      <div>
+        <div class="distinction-title">LinkedIn Top Voice</div>
+        <div class="distinction-sub">2020</div>
+      </div>
     </div>
+
   </div>
-</div></section>
 
-<div class="sep"></div>
+  <div class="dist-sep reveal"></div>
+  <div class="dist-stats">
 
-<!-- ═══ TESTIMONIAL ═══ -->
-<section class="sec sec--dp"><div class="ctn"><div class="tq rv"><div class="tq__q">Steve est pour moi un entrepreneur né : curieux de tout, s'adaptant à tous les milieux, érudit dans de très nombreux domaines, il porte avec lui un regard neuf et créateur partout où il passe — grands groupes, start-ups, sphère privée comme publique.</div><div class="tq__a">Maud Bailly</div><div class="tq__r">CEO Sofitel, MGallery & Emblems — Accor</div></div></div></section>
+    <div class="distinction-item reveal d1">
+      <svg class="distinction-icon" width="54" height="54" viewBox="0 0 56 56" fill="none">
+        <g stroke="#C8A45A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="28" r="10"/>
+          <path d="M24 18 C20 22 20 34 24 38"/>
+          <path d="M14 28 H34"/>
+          <path d="M36.5 18.5 C43 26 43 32 36.5 39.5"/>
+          <path d="M33.5 22.5 C36 24.8 36 31.2 33.5 33.5"/>
+        </g>
+      </svg>
+      <div>
+        <div class="distinction-title">+100 articles publiés</div>
+        <div class="distinction-sub">Revues internationales</div>
+      </div>
+    </div>
 
-<div class="sep"></div>
+    <div class="distinction-item reveal d2">
+      <svg class="distinction-icon" width="54" height="54" viewBox="0 0 56 56" fill="none">
+        <g stroke="#C8A45A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 21 C18.5 17.5 25.5 17.5 28 21 V39 C25.5 35.5 18.5 35.5 11 39 Z"/>
+          <path d="M45 21 C37.5 17.5 30.5 17.5 28 21 V39 C30.5 35.5 37.5 35.5 45 39 Z"/>
+          <path d="M15 25 H23"/><path d="M33 25 H41"/>
+        </g>
+      </svg>
+      <div>
+        <div class="distinction-title">Intervenant</div>
+        <div class="distinction-sub">ESSEC · INSEEC · Audencia</div>
+      </div>
+    </div>
 
-<!-- ═══ NEWSLETTER ═══ -->
-<section class="sec sec--cr" id="newsletter"><div class="ctn"><div class="nl rv"><h3>Newsletter</h3><p>Analyses, réflexions et regards sur les mutations du monde contemporain.</p><form class="nf" action="https://formspree.io/f/XXXXXXXX" method="POST"><input type="email" name="email" placeholder="Votre adresse email" required><button type="submit" class="btn btn--g">S'inscrire</button></form></div></div></section>
+  </div>
+</section>
 
-<div class="sep"></div>
+<!-- ═══════════════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════════════════ -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-label section-label-center reveal">Lettre</div>
+    <h2 class="newsletter-title reveal d1">
+      Analyses, récits<br>& perspectives
+    </h2>
+    <p class="newsletter-sub reveal d2">
+      Une lettre rare — sur les grandes mutations du monde,<br>
+      la stratégie, la littérature et l'intelligence artificielle.
+    </p>
+    <form class="newsletter-form reveal d3" id="nl-form" onsubmit="handleNL(event)">
+      <input
+        class="newsletter-input"
+        id="nl-input"
+        type="email"
+        placeholder="votre@email.com"
+        autocomplete="email"
+        required
+      />
+      <button class="newsletter-btn" type="submit">S'inscrire</button>
+    </form>
+    <p class="newsletter-note reveal d4" id="nl-msg">Aucun spam · Désinscription à tout moment</p>
+  </div>
+</section>
 
-<!-- ═══ CONTACT ═══ -->
-<section class="sec sec--dk" id="contact"><div class="ctn">
-  <div class="sh rv"><p class="lab">Contact</p><h2>Échangeons</h2><div class="dv"></div></div>
-  <div class="ctg"><div class="cti rv"><h3>Entrons en contact</h3><p>Pour toute demande de conférence, collaboration éditoriale, contribution ou demande presse.</p><a href="mailto:contact@stevemoradel.com">contact@stevemoradel.com</a><a href="https://www.linkedin.com/in/stevemoradel/" target="_blank">LinkedIn → Steve Moradel</a><a href="https://www.jabrilia.com" target="_blank">Jabrilia Éditions → jabrilia.com</a></div>
-  <form class="ctf rv d1" action="https://formspree.io/f/XXXXXXXX" method="POST"><input type="text" name="name" placeholder="Votre nom" required><input type="email" name="email" placeholder="Votre email" required><input type="text" name="subject" placeholder="Sujet"><textarea name="message" rows="5" placeholder="Votre message" required></textarea><button type="submit" class="btn btn--g">Envoyer</button></form></div>
-</div></section>
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="section-label section-label-center reveal">Contact</div>
+  <h2 class="contact-tagline reveal d1">Travaillons ensemble</h2>
+  <p class="contact-sub reveal d2">Conférences · Conseil stratégique · Édition</p>
+  <div class="contact-links reveal d3">
+    <a href="/cdn-cgi/l/email-protection#e5868a8b91848691a59691809380888a9784818089cb868a88" class="contact-link">Email</a>
+    <a href="https://www.linkedin.com/in/stevemoradel/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+    <a href="https://jabrilia.com" target="_blank" rel="noopener" class="contact-link">Jabrilia</a>
+  </div>
+</section>
 
-<footer class="ft"><div class="ctn"><div class="ft__l">Steve Moradel</div><div class="ft__lk"><a href="#biographie">Biographie</a><a href="#auteur">Auteur</a><a href="#articles">Editos</a><a href="https://www.jabrilia.com" target="_blank">Jabrilia</a><a href="#conferences">Conférences</a><a href="#contact">Contact</a></div><p class="ft__c">© 2026 Steve Moradel. Tous droits réservés.</p></div></footer>
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-logo">Steve Moradel</span>
+  <p class="footer-copy">&copy; 2026 Steve Moradel — Tous droits réservés</p>
+</footer>
 
-<script>
-const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
-const burger=document.getElementById('burger'),lk=document.getElementById('navLinks');burger.addEventListener('click',()=>{burger.classList.toggle('open');lk.classList.toggle('open')});lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');lk.classList.remove('open')}));
-const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('v');obs.unobserve(i.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
-</body>
-</html>
+<!-- ═══════════════════════════════════════════════════════════
+     JS
+════════════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── NAV scroll state ── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+/* ── Vidéo hero : fondu à la lecture ── */
+const video = document.getElementById('heroVideo');
+if(video){
+  video.addEventListener('canplaythrough', () => {
+    video.classList.add('loaded');
+  });
+  // Si la vidéo est déjà buffered (cache)
+  if(video.readyState >= 3) video.classList.add('loaded');
+}
+
+/* ── Scroll Reveal ── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // on n'observe plus après déclenchement
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin:'0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+/* ── Newsletter → Brevo via /api/subscribe ── */
+async function handleNL(e){
+  e.preventDefault();
+  const input = document.getElementById('nl-input');
+  const msg   = document.getElementById('nl-msg');
+  const btn   = e.target.querySelector('button');
+  const email = input.value.trim();
+  if(!email) return;
+
+  btn.textContent  = '…';
+  btn.disabled     = true;
+  msg.style.color  = 'var(--gris)';
+  msg.textContent  = 'Inscription en cours…';
+
+  try {
+    const res  = await fetch('/api/subscribe', {
+      method:  'POST',
+      headers: {'Content-Type':'application/json'},
+      body:    JSON.stringify({ email }),
+    });
+    const data = await res.json();
+
+    if(res.ok && data.success){
+      btn.textContent  = '✓';
+      msg.textContent  = data.already
+        ? 'Vous êtes déjà inscrit(e) — à très bientôt.'
+        : 'Inscription confirmée. Bienvenue.';
+      msg.style.color  = 'var(--or)';
+      input.value      = '';
+    } else {
+      throw new Error(data.error || 'Erreur');
+    }
+  } catch(err){
+    btn.textContent  = 'S\'inscrire';
+    btn.disabled     = false;
+    msg.textContent  = 'Une erreur est survenue — réessayez.';
+    msg.style.color  = '#c0392b';
+    console.error(err);
+  }
+}
+
+/* ── Smooth reveal au chargement de page ── */
+// Force visibilité sur les éléments déjà dans le viewport
+window.addEventListener('load', () => {
+  revealEls.forEach(el
