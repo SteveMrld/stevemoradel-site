@@ -45,21 +45,24 @@ body{
    SCROLL REVEAL — base states
 ──────────────────────────────────────────────────────────────*/
 .reveal{
-  opacity:0;
-  transform:translateY(28px);
+  opacity:1;
+  transform:translateY(0);
   transition:opacity .9s var(--ease-silk), transform .9s var(--ease-silk);
 }
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.hidden{opacity:0;transform:translateY(28px)}
+.reveal.hidden.visible{opacity:1;transform:translateY(0)}
 .reveal-left{
-  opacity:0;transform:translateX(-32px);
+  opacity:1;transform:translateX(0);
   transition:opacity .9s var(--ease-silk), transform .9s var(--ease-silk);
 }
-.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-left.hidden{opacity:0;transform:translateX(-32px)}
+.reveal-left.hidden.visible{opacity:1;transform:translateX(0)}
 .reveal-scale{
-  opacity:0;transform:scale(.96);
+  opacity:1;transform:scale(1);
   transition:opacity .8s var(--ease-silk), transform .8s var(--ease-silk);
 }
-.reveal-scale.visible{opacity:1;transform:scale(1)}
+.reveal-scale.hidden{opacity:0;transform:scale(.96)}
+.reveal-scale.hidden.visible{opacity:1;transform:scale(1)}
 
 /* delays */
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -793,26 +796,33 @@ window.addEventListener('scroll', () => {
 /* ── Vidéo hero : fondu à la lecture ── */
 const video = document.getElementById('heroVideo');
 if(video){
-  video.addEventListener('canplaythrough', () => {
-    video.classList.add('loaded');
-  });
-  // Si la vidéo est déjà buffered (cache)
-  if(video.readyState >= 3) video.classList.add('loaded');
+  // Rend la vidéo visible immédiatement sur mobile
+  const showVideo = () => video.classList.add('loaded');
+  video.addEventListener('canplay', showVideo);
+  video.addEventListener('canplaythrough', showVideo);
+  video.addEventListener('loadeddata', showVideo);
+  // Fallback : visible après 1.5s quoi qu'il arrive
+  setTimeout(showVideo, 1500);
+  if(video.readyState >= 2) showVideo();
 }
 
 /* ── Scroll Reveal ── */
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-      // on n'observe plus après déclenchement
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin:'0px 0px -40px 0px' });
+const isMobile = window.innerWidth < 768;
 
-revealEls.forEach(el => observer.observe(el));
+if(!isMobile && 'IntersectionObserver' in window){
+  revealEls.forEach(el => el.classList.add('hidden'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+  setTimeout(() => { revealEls.forEach(el => el.classList.add('visible')); }, 2500);
+}
 
 /* ── Newsletter → Brevo via /api/subscribe ── */
 async function handleNL(e){
