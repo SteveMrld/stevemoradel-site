@@ -872,7 +872,7 @@ footer{
     <!-- STATS BAR -->
     <div class="bio-stats-bar">
       <div class="bio-stat-item reveal">
-        <span class="bio-stat-big bio-stat-number" data-target="7">7</span>
+        <span class="bio-stat-big bio-stat-number" data-target="6">6</span>
         <span class="bio-stat-small">Entreprises fondées</span>
       </div>
       <div class="bio-stat-item reveal d1">
@@ -1018,6 +1018,7 @@ footer{
       <div>
         <div class="distinction-title">Chevalier de l'Ordre<br>National du Mérite</div>
         <div class="distinction-sub">2022</div>
+      </div>
     </div>
 
     <div class="distinction-item reveal d2">
@@ -1314,28 +1315,7 @@ gsap.utils.toArray('.full-img-section').forEach(section => {
 /* ══════════════════════════════════════════════
    COMPTEURS ANIMÉS — stats bar
 ══════════════════════════════════════════════ */
-function animateCounter(el) {
-  const target = el.dataset.target;
-  const isPlus = target.startsWith('+');
-  const num = parseInt(target.replace('+','').replace('K',''));
-  const isK = target.includes('K');
-  const prefix = isPlus ? '+' : '';
-  const suffix = isK ? 'K' : '';
-  
-  gsap.to({ val: 0 }, {
-    val: num,
-    duration: 2,
-    ease: 'power2.out',
-    onUpdate: function() {
-      el.textContent = prefix + Math.round(this.targets()[0].val) + suffix;
-    },
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 85%',
-      once: true,
-    }
-  });
-}
+
 
 document.querySelectorAll('.bio-stat-number[data-target]').forEach(animateCounter);
 
