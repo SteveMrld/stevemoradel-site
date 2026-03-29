@@ -18,6 +18,15 @@ module.exports = async (req, res) => {
     }
   }
 
+  // Debug : afficher les listes Brevo disponibles
+  if (req.query.debug === '1') {
+    const listsRes = await fetch('https://api.brevo.com/v3/contacts/lists', {
+      headers: { 'api-key': BREVO_API_KEY }
+    });
+    const listsData = await listsRes.json();
+    return res.status(200).json(listsData);
+  }
+
   // Lire le dernier article
   let articles = [];
   try {
