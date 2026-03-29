@@ -1,0 +1,15 @@
+{
+  "articles": [
+    {
+      "id": "world-with-women-2026",
+      "date": "2026-03-30",
+      "dateDisplay": "30 mars 2026",
+      "tag": "Engagement",
+      "title": "World with Women! — Le mouvement mondial pour la mixité est lancé",
+      "text": "Officiellement lancé au Sommet ChangeNOW à Paris, en présence d'Élisabeth Moreno, Marie-José Pérec, Sarah Ourahmoune et de nombreuses personnalités, World with Women! appelle à une journée mondiale de mobilisation le 13 octobre 2026.",
+      "link": "https://www.worldwithwomen.com",
+      "linkLabel": "Signer le manifeste",
+      "image": "https://res.cloudinary.com/dnbyi8fw6/image/upload/v1774812034/Screenshot_20260329_211920_Samsung_Notes_wnjb8f.jpg"
+    }
+  ]
+}
