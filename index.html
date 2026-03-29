@@ -838,8 +838,8 @@ footer{
   <div class="hero-glow"></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Écrivain · Entrepreneur · Stratège</p>
-    <h1 class="hero-name">Steve Moradel</h1>
+    <p class="hero-eyebrow">Paris · 2026</p>
+    <h1 class="hero-name" id="hero-title">Steve Moradel</h1>
     <div class="hero-divider">
       <span></span>
       <div class="hero-divider-dot"></div>
@@ -1427,7 +1427,31 @@ const observer2 = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 sections.forEach(s => observer2.observe(s));
 
-} // end isDesktop
+/* ══════════════════════════════════════════════
+   TITRE HÉRO — animation lettre par lettre (tous écrans)
+══════════════════════════════════════════════ */
+(function() {
+  const el = document.getElementById('hero-title');
+  if(!el) return;
+  const text = el.textContent;
+  el.textContent = '';
+  el.style.opacity = '1';
+  [...text].forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.cssText = `
+      display:inline-block;
+      opacity:0;
+      transform:translateY(30px);
+      transition: opacity 0.5s ease ${0.6 + i * 0.06}s, transform 0.5s ease ${0.6 + i * 0.06}s;
+    `;
+    el.appendChild(span);
+    setTimeout(() => {
+      span.style.opacity = '1';
+      span.style.transform = 'translateY(0)';
+    }, 50);
+  });
+})();
 
 /* ══════════════════════════════════════════════
    COMPTEURS ANIMÉS — tous écrans
