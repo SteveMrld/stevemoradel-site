@@ -223,6 +223,8 @@ nav.scrolled{
 }
 .nav-links a:hover{color:var(--creme)}
 .nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--or)}
+.nav-links a.active::after{transform:scaleX(1);background:var(--or)}
 
 /* ─────────────────────────────────────────────────────────────
    HERO
@@ -436,7 +438,7 @@ nav.scrolled{
 .bio-photo-wrap{display:none}
 .bio-photo{display:none}
 .bio-stats{display:none}
-.bio-stat-number{display:none}
+.bio-stat-number{display:inline}
 .bio-stat-label{display:none}
 .bio-text{
   font-family:'Cormorant Garamond',serif;
@@ -870,19 +872,19 @@ footer{
     <!-- STATS BAR -->
     <div class="bio-stats-bar">
       <div class="bio-stat-item reveal">
-        <span class="bio-stat-big">6</span>
+        <span class="bio-stat-big bio-stat-number" data-target="6">6</span>
         <span class="bio-stat-small">Entreprises fondées</span>
       </div>
       <div class="bio-stat-item reveal d1">
-        <span class="bio-stat-big">+100</span>
+        <span class="bio-stat-big bio-stat-number" data-target="+100">+100</span>
         <span class="bio-stat-small">Articles publiés</span>
       </div>
       <div class="bio-stat-item reveal d2">
-        <span class="bio-stat-big">3</span>
+        <span class="bio-stat-big bio-stat-number" data-target="3">3</span>
         <span class="bio-stat-small">Prix & distinctions</span>
       </div>
       <div class="bio-stat-item reveal d3">
-        <span class="bio-stat-big">+200K</span>
+        <span class="bio-stat-big bio-stat-number" data-target="+200K">+200K</span>
         <span class="bio-stat-small">Abonnés</span>
       </div>
     </div>
@@ -1168,45 +1170,264 @@ footer{
 <!-- ═══════════════════════════════════════════════════════════
      JS
 ════════════════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ── NAV scroll state ── */
+<!-- GSAP + ScrollTrigger + Lenis via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+/* ══════════════════════════════════════════════
+   LENIS — Smooth scroll premium
+══════════════════════════════════════════════ */
+const lenis = new Lenis({
+  duration: 1.4,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smooth: true,
+});
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+/* ══════════════════════════════════════════════
+   GSAP — enregistrement ScrollTrigger
+══════════════════════════════════════════════ */
+gsap.registerPlugin(ScrollTrigger);
+
+/* ══════════════════════════════════════════════
+   CURSEUR CUSTOM
+══════════════════════════════════════════════ */
+const cursorDot = document.createElement('div');
+cursorDot.id = 'cursor-dot';
+document.body.appendChild(cursorDot);
+
+const cursorStyle = document.createElement('style');
+cursorStyle.textContent = `
+  * { cursor: none !important; }
+  #cursor-dot {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: #C8A45A;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, opacity 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+  }
+  #cursor-dot.large {
+    width: 40px; height: 40px;
+    background: rgba(200,164,90,0.15);
+    border: 1px solid rgba(200,164,90,0.6);
+  }
+  @media (hover: none) { #cursor-dot { display: none; } * { cursor: auto !important; } }
+`;
+document.head.appendChild(cursorStyle);
+
+let mouseX = 0, mouseY = 0;
+let dotX = 0, dotY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+(function animateCursor() {
+  dotX += (mouseX - dotX) * 0.15;
+  dotY += (mouseY - dotY) * 0.15;
+  cursorDot.style.left = dotX + 'px';
+  cursorDot.style.top  = dotY + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+
+document.querySelectorAll('a, button, .actu-card, .distinction-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cursorDot.classList.add('large'));
+  el.addEventListener('mouseleave', () => cursorDot.classList.remove('large'));
+});
+
+/* ══════════════════════════════════════════════
+   NAV — scroll state
+══════════════════════════════════════════════ */
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, {passive:true});
 
-/* ── Vidéo hero : fondu à la lecture ── */
+/* ══════════════════════════════════════════════
+   VIDÉO HERO — fondu
+══════════════════════════════════════════════ */
 const video = document.getElementById('heroVideo');
 if(video){
-  // Rend la vidéo visible immédiatement sur mobile
   const showVideo = () => video.classList.add('loaded');
   video.addEventListener('canplay', showVideo);
   video.addEventListener('canplaythrough', showVideo);
   video.addEventListener('loadeddata', showVideo);
-  // Fallback : visible après 1.5s quoi qu'il arrive
   setTimeout(showVideo, 1500);
   if(video.readyState >= 2) showVideo();
 }
 
-/* ── Scroll Reveal ── */
-const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
-const isMobile = window.innerWidth < 768;
+/* ══════════════════════════════════════════════
+   HERO — animation d'entrée GSAP
+══════════════════════════════════════════════ */
+const heroTl = gsap.timeline({ delay: 0.3 });
+heroTl
+  .from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' })
+  .from('.hero-title', { opacity: 0, y: 40, duration: 1.0, ease: 'power3.out' }, '-=0.4')
+  .from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+  .from('.hero-cta', { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out' }, '-=0.4');
 
-if(!isMobile && 'IntersectionObserver' in window){
-  revealEls.forEach(el => el.classList.add('hidden'));
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+/* ══════════════════════════════════════════════
+   PARALLAX — images full-width
+══════════════════════════════════════════════ */
+gsap.utils.toArray('.full-img-section').forEach(section => {
+  const img = section.querySelector('img');
+  if(img) {
+    gsap.to(img, {
+      yPercent: 15,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
       }
     });
-  }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
-  revealEls.forEach(el => observer.observe(el));
-  setTimeout(() => { revealEls.forEach(el => el.classList.add('visible')); }, 2500);
+  }
+});
+
+/* ══════════════════════════════════════════════
+   COMPTEURS ANIMÉS — stats bar
+══════════════════════════════════════════════ */
+function animateCounter(el) {
+  const target = el.dataset.target;
+  const isPlus = target.startsWith('+');
+  const num = parseInt(target.replace('+','').replace('K',''));
+  const isK = target.includes('K');
+  const prefix = isPlus ? '+' : '';
+  const suffix = isK ? 'K' : '';
+  
+  gsap.to({ val: 0 }, {
+    val: num,
+    duration: 2,
+    ease: 'power2.out',
+    onUpdate: function() {
+      el.textContent = prefix + Math.round(this.targets()[0].val) + suffix;
+    },
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+    }
+  });
 }
 
-/* ── Newsletter → Brevo via /api/subscribe ── */
+document.querySelectorAll('.bio-stat-number[data-target]').forEach(animateCounter);
+
+/* ══════════════════════════════════════════════
+   SECTION REVEALS — GSAP ScrollTrigger
+══════════════════════════════════════════════ */
+// Titres de section
+gsap.utils.toArray('.section-label').forEach(el => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 20,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+  });
+});
+
+// Titres h2
+gsap.utils.toArray('h2').forEach(el => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 35,
+    duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+  });
+});
+
+// Cartes distinctions — stagger
+gsap.from('.distinction-item', {
+  opacity: 0,
+  y: 40,
+  stagger: 0.1,
+  duration: 0.7,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: '.distinctions', start: 'top 75%', once: true }
+});
+
+// Carte actualité
+gsap.from('.actu-card', {
+  opacity: 0,
+  y: 50,
+  duration: 0.8,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: '.actu-card', start: 'top 85%', once: true }
+});
+
+// Bio texte
+gsap.from('.bio-text p', {
+  opacity: 0,
+  y: 25,
+  stagger: 0.15,
+  duration: 0.8,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: '.bio-text', start: 'top 80%', once: true }
+});
+
+// Quote overlays
+gsap.utils.toArray('.quote-overlay').forEach(el => {
+  gsap.from(el, {
+    opacity: 0,
+    x: -30,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 80%', once: true }
+  });
+});
+
+/* ══════════════════════════════════════════════
+   EFFET MAGNÉTIQUE — boutons
+══════════════════════════════════════════════ */
+document.querySelectorAll('.hero-cta, .newsletter-btn, .actu-link').forEach(btn => {
+  btn.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    gsap.to(this, {
+      x: x * 0.3,
+      y: y * 0.3,
+      duration: 0.4,
+      ease: 'power2.out'
+    });
+  });
+  btn.addEventListener('mouseleave', function() {
+    gsap.to(this, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+  });
+});
+
+/* ══════════════════════════════════════════════
+   NAV — active link au scroll
+══════════════════════════════════════════════ */
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer2 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => observer2.observe(s));
+
+/* ══════════════════════════════════════════════
+   NEWSLETTER → Brevo via /api/subscribe
+══════════════════════════════════════════════ */
 async function handleNL(e){
   e.preventDefault();
   const input = document.getElementById('nl-input');
@@ -1246,8 +1467,6 @@ async function handleNL(e){
     console.error(err);
   }
 }
-
-/* ── Smooth reveal au chargement de page ── */
-// Force visibilité sur les éléments déjà dans le viewport
-window.addEventListener('load', () => {
-  revealEls.forEach(el
+</script>
+</body>
+</html>
