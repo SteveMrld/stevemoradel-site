@@ -1194,6 +1194,7 @@ requestAnimationFrame(raf);
    GSAP — enregistrement ScrollTrigger
 ══════════════════════════════════════════════ */
 gsap.registerPlugin(ScrollTrigger);
+const isDesktop = window.innerWidth >= 768;
 
 /* ══════════════════════════════════════════════
    CURSEUR CUSTOM
@@ -1268,8 +1269,9 @@ if(video){
 }
 
 /* ══════════════════════════════════════════════
-   HERO — animation d'entrée GSAP
+   HERO — animation d'entrée GSAP (desktop only)
 ══════════════════════════════════════════════ */
+if(isDesktop) {
 const heroTl = gsap.timeline({ delay: 0.3 });
 heroTl
   .from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' })
@@ -1424,6 +1426,8 @@ const observer2 = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.4 });
 sections.forEach(s => observer2.observe(s));
+
+} // end isDesktop
 
 /* ══════════════════════════════════════════════
    NEWSLETTER → Brevo via /api/subscribe
