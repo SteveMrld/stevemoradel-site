@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
   // Dernier article (le plus récent)
   const article = articles.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
-  const BREVO_API_KEY = process.env.BREVO_API_KEY;
+  const BREVO_API_KEY = process.env.BREVO_KEY || process.env.BREVO_API_KEY;
   const LIST_ID = parseInt(process.env.BREVO_LIST_ID || '2', 10);
 
   // Construire le HTML de l'email
