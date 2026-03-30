@@ -1263,7 +1263,7 @@ cursorStyle.textContent = `
     background: rgba(200,164,90,0.15);
     border: 1px solid rgba(200,164,90,0.6);
   }
-  @media (hover: none) { #cursor-dot { display: none; } * { cursor: auto !important; } }
+  @media (hover: none), (pointer: coarse) { #cursor-dot { display: none !important; } * { cursor: auto !important; } }
 `;
 document.head.appendChild(cursorStyle);
 
